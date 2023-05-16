@@ -1,0 +1,9 @@
+@mixin font-face($fname, $fstyle, $fweight, $furl, $display: swap) {
+    @font-face {
+        font-family: $fname;
+        font-style: $fstyle;
+        font-weight: $fweight;
+        src: url($furl) format('truetype');
+        font-display: $display;
+    }
+}

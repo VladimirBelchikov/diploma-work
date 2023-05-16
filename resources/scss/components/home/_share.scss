@@ -1,0 +1,5 @@
+.homeShare {
+    &__button {
+        @include fluid-font-size(14px, 24px, 400px, 1200px);
+    }
+}
