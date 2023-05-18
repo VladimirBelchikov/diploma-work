@@ -3,15 +3,14 @@ class FormSender {
     // Валидацию здесь лучше не делать и вынести её во внешние модули, иначе sender будет переполнен условиями
     constructor(event, props = {}) {
         this.event = event;
-        this.sendForm();
     }
 
-    sendForm = () => {
+    sendForm = async () => {
         this.event.preventDefault();
         const formData = new FormData(this.event.target);
 
         // Никакой обработки ответов нет, может быть нужно дописать в будущем
-        fetch('api/order/create', {
+        const response = await fetch('api/order/create', {
             headers: {
                 Accept: 'application/json',
             },
@@ -19,11 +18,15 @@ class FormSender {
             mode: 'same-origin',
             body: formData,
         })
-            .then((response) => response.json())
-            .then((data) => {
-                data.success ? console.log('Form has been sent') : console.log('Form send error');
-            })
-            .catch((err) => console.log(err));
+
+        const data = await response.json()
+
+        if (data.success) return true
+            // .then((response) => response.json())
+            // .then((data) => {
+            //     data.success ? console.log('Form has been sent') : console.log('Form send error');
+            // })
+            // .catch((err) => console.log(err));
     }
 }
 

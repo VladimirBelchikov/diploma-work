@@ -1,9 +1,10 @@
-import './bootstrap';
+import './bootstrap'
 import 'bootstrap'
-import Inputmask from "inputmask";
-import FormSender from "./form-sender";
-import './components/sliders/home-about-swiper';
+import Inputmask from "inputmask"
+import FormSender from "./form-sender"
+import './components/sliders/home-about-swiper'
 import './components/sliders/home-card-swiper'
+import './components/modals/preview-modal'
 import { validatePhone } from "./helpers";
 
 Inputmask({ "mask": "+7 (999) 999-99-99" }).mask('[name=phone]');
@@ -20,6 +21,7 @@ document.querySelectorAll('.order-form').forEach((form) => {
         submitButton.setAttribute('disabled', 'true')
         submitButton.textContent = 'Подождите...'
 
-        new FormSender(event)
+        const formSender = new FormSender(event)
+        if (await formSender.sendForm()) submitButton.textContent = 'Заявка успешно отправлена'
     })
 })

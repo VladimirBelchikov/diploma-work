@@ -8,7 +8,7 @@
             <li><a href="#">Контакты</a></li>
         </ul>
     </nav>
-    <button class="header__callback button">
+    <button class="header__callback button" data-bs-toggle="modal" data-bs-target="#callback-modal">
         Перезвоните мне
     </button>
 </header>

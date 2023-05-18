@@ -1,3 +1,10 @@
 .callback-modal {
+    & .modal-content {
+        --bs-modal-bg: #D7D1F3;
+    }
 
+    & .button {
+        display: block;
+        margin: 0 auto;
+    }
 }

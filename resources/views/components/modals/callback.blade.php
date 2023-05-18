@@ -1,4 +1,7 @@
-<div class="modal fade" id="callback-modal" tabindex="-1" aria-labelledby="callback-modalLabel" aria-hidden="true">
+<div class="modal fade callback-modal"
+     id="callback-modal"
+     tabindex="-1"
+     aria-labelledby="callback-modalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">

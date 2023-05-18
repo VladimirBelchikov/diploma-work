@@ -16,6 +16,7 @@
 </main>
 
 @include('components.modals.callback')
+@include('components.modals.preview')
 
 </body>
 </html>
