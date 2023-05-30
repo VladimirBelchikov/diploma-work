@@ -2,11 +2,27 @@
 
 <main class="main container">
     <div class="d-flex mt-2 mb-4" style="gap: 20px;">
-        <button class="button">Неразобранное</button>
-        <button class="button">МК</button>
-        <button class="button">Репетитор</button>
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{{ route('admin') }}">
+                    Все заявки
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('application.callback') }}">Обратный звонок</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('application.mk') }}">Мастер класс</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('application.photo') }}">Фотосессия</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('application.couch') }}">Репетитор</a>
+            </li>
+        </ul>
     </div>
-    <table class="table table-bordered caption-top">
+    <table class="table table-bordered table-light caption-top">
         <caption>Список заявок</caption>
         <thead>
         <tr>
@@ -24,7 +40,7 @@
                 <td>{{ $item->name }}</td>
                 <td>{{ $item->phone }}</td>
                 <td>{{ $item->note }}</td>
-                <td>{{ $item->type }}</td>
+                <td>{{ config('order.type.' . $item->type) }}</td>
             </tr>
         @endforeach
         </tbody>

@@ -9,7 +9,7 @@
     <link rel="preload" href="{{ asset('assets/fonts/Montserrat-Regular.ttf') }}" as="font" type="font/ttf" crossorigin>
 </head>
 <body>
-<main class="main">
+<main>
     @yield('main')
 </main>
 </body>
