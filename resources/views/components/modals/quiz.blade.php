@@ -15,25 +15,20 @@
                 <div class="quiz-modal__slide swiper-slide">
                     <p class="quiz-modal__slide-title">Выберите услугу</p>
                     <div class="quiz-modal__slide-answers">
-                        <button class="button quiz-modal__slide-button" data-quiz-ans="mk">
+                        <label  class="button quiz-modal__button" data-quiz-ans="mk">
+                            <input type="radio" value="1">
                             Мастер класс
-                        </button>
-                        <button class="button quiz-modal__slide-button" data-quiz-ans="phsession">
+                        </label>
+                        <label class="button quiz-modal__button" data-quiz-ans="phsession">
+                            <input type="radio" value="2">
                             Организация фотосессии
-                        </button>
-                        <button class="button quiz-modal__slide-button" data-quiz-ans="couch">
+                        </label>
+                        <label class="button quiz-modal__button" data-quiz-ans="couch">
+                            <input type="radio" value="3">
                             Подбор репетитора
-                        </button>
+                        </label>
                     </div>
                 </div>
-{{--                <div class="quiz-modal__slide swiper-slide">--}}
-{{--                    <p class="quiz-modal__slide-title">Как вы оцениваете уровень своей подготовки?</p>--}}
-{{--                    <div class="quiz-modal__slide-answers">--}}
-{{--                        <button class="button quiz-modal__slide-button">Новичок</button>--}}
-{{--                        <button class="button quiz-modal__slide-button">Любитель</button>--}}
-{{--                        <button class="button quiz-modal__slide-button">Профессионал</button>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
             </div>
         </div>
     </div>

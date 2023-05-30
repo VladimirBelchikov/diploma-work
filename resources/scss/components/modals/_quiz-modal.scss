@@ -1,5 +1,5 @@
 .quiz-modal {
-    position: absolute;
+    position: fixed;
     //display: none;
     inset: 0;
     display: flex;
@@ -10,7 +10,6 @@
 
     &__container {
         position: relative;
-        display: flex;
         max-width: 700px;
         width: 100%;
         height: 500px;
@@ -41,9 +40,14 @@
         gap: 20px;
     }
 
-    &__slide-button {
+    &__button {
         width: max-content;
         padding: 10px 15px;
         font-size: 26px;
+        cursor: pointer;
+
+        input {
+            display: none;
+        }
     }
 }
