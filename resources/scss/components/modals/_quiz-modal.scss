@@ -1,0 +1,49 @@
+.quiz-modal {
+    position: absolute;
+    //display: none;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(86, 86, 86, 0.5);
+    z-index: 1000;
+
+    &__container {
+        position: relative;
+        display: flex;
+        max-width: 700px;
+        width: 100%;
+        height: 500px;
+        padding: 30px 50px 30px 30px;
+        border-radius: 15px;
+        background-color: #8472C6;
+    }
+
+    &__close {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        border: none;
+        outline: none;
+        color: black;
+        background-color: transparent;
+    }
+
+    &__slide-title {
+        margin-bottom: 26px;
+        font-size: 32px;
+        color: #FFFFFF;
+    }
+
+    &__slide-answers {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    &__slide-button {
+        width: max-content;
+        padding: 10px 15px;
+        font-size: 26px;
+    }
+}

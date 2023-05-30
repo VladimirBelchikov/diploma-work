@@ -5,6 +5,7 @@ import FormSender from "./form-sender"
 import './components/sliders/home-about-swiper'
 import './components/sliders/home-card-swiper'
 import './components/modals/preview-modal'
+import './components/modals/quiz-modal'
 import { validatePhone } from "./helpers";
 
 Inputmask({ "mask": "+7 (999) 999-99-99" }).mask('[name=phone]');

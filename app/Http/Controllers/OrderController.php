@@ -12,6 +12,7 @@ class OrderController extends Controller
         $order->name = $request->name;
         $order->phone = $request->phone;
         $order->note = $request->note ?? null;
+        $order->type = $request->type ?? null;
 
         $order->save();
 

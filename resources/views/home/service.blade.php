@@ -9,6 +9,7 @@
                      data-title="Подбор репетитора"
                      data-description="<p>Давно мечтаете научиться писать акварелью? Или Вы мечтаете поступить в художественный колледж?</p><p>Наши профессионалы помогут Вам!</p><p>Оставьте заявку, мы с Вами свяжемся и подберём Вам идеального педагога!</p>"
                      data-images="assets/img/home/service/1.jpg&assets/img/home/service/2.jpg&assets/img/home/service/3.jpg"
+                     data-type="1"
                 >
                     <div class="cardSwiper__img">
                         <img src="{{ asset('assets/img/home/service/1.jpg') }}" alt="">

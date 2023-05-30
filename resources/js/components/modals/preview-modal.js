@@ -1,16 +1,16 @@
 import Swiper, { Navigation } from "swiper";
-import window from "inputmask/lib/global/window";
+import data from "inputmask/lib/dependencyLibs/data";
 
 function init() {
     const modal = document.querySelector('#preview-modal')
 
     if (!modal) return
 
-    const textContainer = modal.querySelector('.preview-modal__text-container')
     const title = modal.querySelector('.preview-modal__title')
     const description = modal.querySelector('.preview-modal__description')
     const swiperContainer = modal.querySelector('.preview-modal__swiper')
     const swiperWrapper = modal.querySelector('.swiper-wrapper')
+    const typeInput = modal.querySelector('[name=type]')
 
     const swiper = new Swiper(swiperContainer, {
         loop: true,
@@ -25,6 +25,7 @@ function init() {
         const { dataset } = relatedTarget
         if (dataset.title) title.textContent = dataset.title
         if (dataset.description) description.innerHTML = dataset.description
+        if (dataset.type) typeInput.value = dataset.type
         if (dataset.images) {
             const images = dataset.images.split('&')
             images.forEach((image) => {
@@ -39,12 +40,12 @@ function init() {
         }
     })
 
-    window.sw = swiper
 
     modal.addEventListener('hide.bs.modal', () => {
         title.textContent = ''
         description.innerHTML = ''
         swiperWrapper.innerHTML = ''
+        typeInput.value = ''
     })
 }
 

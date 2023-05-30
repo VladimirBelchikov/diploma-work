@@ -17,6 +17,7 @@
 
 @include('components.modals.callback')
 @include('components.modals.preview')
+@include('components.modals.quiz')
 
 </body>
 </html>
