@@ -39,7 +39,7 @@
                 <th scope="row">{{ $item->id }}</th>
                 <td>{{ $item->name }}</td>
                 <td>{{ $item->phone }}</td>
-                <td>{{ $item->note }}</td>
+                <td>{!! $item->note !!}</td>
                 <td>{{ config('order.type.' . $item->type) }}</td>
             </tr>
         @endforeach

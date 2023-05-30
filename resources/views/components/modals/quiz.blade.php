@@ -1,4 +1,4 @@
-<div class="quiz-modal">
+<div class="quiz-modal" style="display: none;">
     <div class="quiz-modal__container">
         <button type="button" class="quiz-modal__close">
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"

@@ -9,7 +9,7 @@
                      data-title="Подбор репетитора"
                      data-description="<p>Давно мечтаете научиться писать акварелью? Или Вы мечтаете поступить в художественный колледж?</p><p>Наши профессионалы помогут Вам!</p><p>Оставьте заявку, мы с Вами свяжемся и подберём Вам идеального педагога!</p>"
                      data-images="assets/img/home/service/1.jpg&assets/img/home/service/2.jpg&assets/img/home/service/3.jpg"
-                     data-type="1"
+                     data-type="3"
                 >
                     <div class="cardSwiper__img">
                         <img src="{{ asset('assets/img/home/service/1.jpg') }}" alt="">
@@ -24,6 +24,7 @@
                      data-title="Проведение МК"
                      data-description="<p>Где учиться по-новому работать со старыми кистями? Конечно же на мастер-классах!</p><p>В нашей студии Вы можете как посетить любой мастер-класс, так и создать свой!</p><p>Оставьте заявку, мы с Вами свяжемся! Возможно, это будет тот самый мастер-класс, благодаря которому, Вы вступите не новую ступень Вашего творческого пути!</p>"
                      data-images="assets/img/home/service/4.jpg&assets/img/home/service/5.jpg&assets/img/home/service/6.jpg&assets/img/home/service/7.jpg"
+                     data-type="1"
                 >
                     <div class="cardSwiper__img">
                         <img src="{{ asset('assets/img/home/service/4.jpg') }}" alt="">
@@ -38,6 +39,7 @@
                      data-title="Организация фотосессий"
                      data-description="<p>Всегда мечтали об эстетичных фото в художественной мастерской «как в пинтересте»?</p><p>Мы Вам поможем! Забронируйте мастерскую для фотосессии, вот увидите, фото получатся потрясающими!</p><p>Оставьте заявку, мы с Вами свяжемся!</p>"
                      data-images="assets/img/home/service/8.jpg&assets/img/home/service/9.jpg&assets/img/home/service/10.jpg&assets/img/home/service/11.jpg"
+                     data-type="2"
                 >
                     <div class="cardSwiper__img">
                         <img src="{{ asset('assets/img/home/service/8.jpg') }}" alt="">

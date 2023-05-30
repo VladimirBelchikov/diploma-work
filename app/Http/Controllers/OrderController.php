@@ -4,18 +4,29 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Throwable;
 
 class OrderController extends Controller
 {
-    public function postOrder(Request $request) {
+    public function postOrder(Request $request)
+    {
         $order = new Order;
         $order->name = $request->name;
         $order->phone = $request->phone;
-        $order->note = $request->note ?? null;
+        $order->note = Str::of($request->note)->replace('\n','<p>&nbsp;</p>') ?? null;
         $order->type = $request->type ?? null;
 
-        $order->save();
+        try {
+            $order->save();
 
-        return json_encode(['success' => true]);
+            $success = true;
+        } catch (Throwable $e) {
+            report($e);
+
+            $success = false;
+        }
+
+        return json_encode(['success' => $success]);
     }
 }
