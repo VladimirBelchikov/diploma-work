@@ -55,7 +55,7 @@ function init() {
 
     function createSlide(item) {
         const answers = item.answers
-            .map(ans => `<label class="button quiz-modal__slide-button quiz-modal__button">
+            .map(ans => `<label class="button quiz-modal__slide-button">
                                 <input type="radio" value="${ ans }">
                                     ${ ans }
                             </label>`)
@@ -87,8 +87,9 @@ function init() {
     }
 
     quiz.querySelectorAll('[data-quiz-ans]').forEach(button => {
-        button.addEventListener('click', ({ target }) => {
-            const ansArr = questionsObj[target.dataset.quizAns]
+        button.addEventListener('click', (event) => {
+            const ansArr = questionsObj[event.target.dataset.quizAns]
+            console.log(ansArr)
             ansArr.forEach(item => {
                 swiperWrapper.insertAdjacentHTML('beforeend', createSlide(item))
             })
