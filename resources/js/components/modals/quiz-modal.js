@@ -7,6 +7,8 @@ function init() {
 
     if (!quiz) return
 
+    let flag = true // Костыль
+
     const questionsObj = {
         mk: [
             {
@@ -34,9 +36,9 @@ function init() {
             }
         ],
         couch: [
-            {question: 'Какое направление вас интересует?', answers: ['Живопись', 'Музыка', 'Фотография']},
-            {question: 'В какое время удобнее посещать занятие?', answers: ['Утром', 'Днем', 'Вечером']},
-            {question: 'Есть ли у вас собственный инструментарий?', answers: ['Да', 'Нет']}
+            { question: 'Какое направление вас интересует?', answers: ['Живопись', 'Музыка', 'Фотография'] },
+            { question: 'В какое время удобнее посещать занятие?', answers: ['Утром', 'Днем', 'Вечером'] },
+            { question: 'Есть ли у вас собственный инструментарий?', answers: ['Да', 'Нет'] }
         ]
     }
 
@@ -105,8 +107,11 @@ function init() {
 
         swiperContainer.querySelector('.order-form').addEventListener('submit', async (event) => {
             event.preventDefault()
+            const quizForm = document.querySelector('.quiz-form')
+            quizForm.querySelector('input[name=type]').value = swiperContainer.querySelector('[data-quiz-ans]:checked').value
+            quizForm.querySelector('input[name=note]').value = getInterview()
 
-            const {target} = event
+            const { target } = event
 
             if (!validatePhone(target.querySelector('input[name=phone]').value)) return
 
@@ -116,7 +121,7 @@ function init() {
 
             const formSender = new FormSender(event)
             if (await formSender.sendForm()) submitButton.textContent = 'Заявка успешно отправлена'
-        })
+        }, { once: true })
     }
 
     function handleClick() {
@@ -130,7 +135,7 @@ function init() {
             const questionText = card.querySelector('.quiz-modal__slide-title').textContent
             const answer = card.querySelector('input[type=radio]:checked').value
 
-            leadMessage += `Вопрос: ${ questionText }\nОтвет: ${ answer }\n\n`
+            leadMessage += `Вопрос: ${ questionText } \n Ответ: ${ answer } \n`
         });
         return leadMessage
     }
@@ -146,23 +151,14 @@ function init() {
             quiz.querySelectorAll('[data-js=next-slide]').forEach(button => {
                 button.addEventListener('click', (event) => {
                     handleClick()
-                    if (swiper.isEnd) {
+                    if (swiper.isEnd && flag) {
+                        flag = false
                         createLastSlide()
-                        getFormValues()
                     }
-                }, {once: true})
+                }, { once: true })
             })
-        }, {once: true})
+        }, { once: true })
     })
-
-
-    function getFormValues() {
-        const quizForm = document.querySelector('.quiz-form')
-        quizForm?.addEventListener('submit', (event) => {
-            quizForm.querySelector('input[name=type]').value = swiperContainer.querySelector('[data-quiz-ans]:checked').value
-            quizForm.querySelector('input[name=note]').value = getInterview()
-        })
-    }
 
 
     triggers.forEach(trigger => {
