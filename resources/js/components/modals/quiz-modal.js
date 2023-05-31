@@ -32,9 +32,9 @@ function init() {
             }
         ],
         couch: [
-            { question: 'Вопрос 1', answers: ['Ответ1', 'ответ 2', 'ответ 3'] },
-            { question: 'Вопрос 2', answers: ['ответ 1', 'ответ2', 'ответ 3'] },
-            { question: 'Вопрос 3', answers: ['ответ 1', 'ответ 2', 'ответ3'] }
+            {question: 'Вопрос 1', answers: ['Ответ1', 'ответ 2', 'ответ 3']},
+            {question: 'Вопрос 2', answers: ['ответ 1', 'ответ2', 'ответ 3']},
+            {question: 'Вопрос 3', answers: ['ответ 1', 'ответ 2', 'ответ3']}
         ]
     }
 
@@ -78,7 +78,7 @@ function init() {
             .join('')
 
         return `
-                <div class="swiper-slide">
+                <div class="swiper-slide" data-js="quiz-question">
                     <p class="quiz-modal__slide-title">${ item.question }</p>
                     <div class="quiz-modal__slide-answers">
                         ${ answers }
@@ -87,35 +87,67 @@ function init() {
             `
     }
 
+    function createLastSlide() {
+        const lastSlide = `<div class="swiper-slide">
+                    <p class="quiz-modal__slide-title">Заполните форму</p>
+                    <form action="" class="form quiz-form">
+                        <input type="hidden" class="form-control" name="type" value="">
+                        <input type="hidden" class="form-control" name="note" value="">
+                        <input type="text" class="form-control" name="name" placeholder="Имя">
+                        <input type="tel" class="form-control" name="phone" placeholder="Телефон" required>
+                        <button type="submit" class="button">Отправить</button>
+                    </form>
+                </div>`
+        swiperWrapper.insertAdjacentHTML('beforeend', lastSlide)
+        swiper.update()
+    }
+
     function handleClick() {
         swiper.slideNext()
     }
 
     function getInterview() {
-        let leadMessage = '';
-        const cards = swiperContainer.querySelectorAll('.quiz-modal__slide');
+        let leadMessage = ''
+        const cards = swiperContainer.querySelectorAll('[data-js=quiz-question]')
         cards.forEach((card) => {
-            const questionText = card.querySelector('.quiz-modal__slide-title').textContent;
-            const answer = card.querySelector('input[type="radio"]:checked').value;
-            leadMessage += `Вопрос: ${ questionText }\nОтвет: ${ answer }\n\n`;
+            const questionText = card.querySelector('.quiz-modal__slide-title').textContent
+            const answer = card.querySelector('input[type=radio]:checked').value
+
+            leadMessage += `Вопрос: ${ questionText }\nОтвет: ${ answer }\n\n`
         });
-        return leadMessage;
+        return leadMessage
     }
 
     quiz.querySelectorAll('[data-quiz-ans]').forEach(button => {
         button.addEventListener('click', (event) => {
             const ansArr = questionsObj[event.target.dataset.quizAns]
-            console.log(ansArr)
             ansArr.forEach(item => {
                 swiperWrapper.insertAdjacentHTML('beforeend', createSlide(item))
             })
             swiper.update()
             swiper.slideNext()
             quiz.querySelectorAll('[data-js=next-slide]').forEach(button => {
-                button.addEventListener('click', handleClick, { once: true })
+                button.addEventListener('click', (event) => {
+                    handleClick()
+                    if (swiper.isEnd) {
+                        createLastSlide()
+                        postForm()
+                    }
+                }, {once: true})
             })
-        }, { once: true })
+        }, {once: true})
     })
+
+
+    function postForm() {
+        const quizForm = document.querySelector('.quiz-form')
+        quizForm?.addEventListener('submit', (event) => {
+            event.preventDefault()
+            quizForm.querySelector('input[name=type]').value = swiperContainer.querySelector('[data-quiz-ans]:checked').value
+            quizForm.querySelector('input[name=note]').value = getInterview()
+        })
+    }
+
 
     triggers.forEach(trigger => {
         trigger.addEventListener('click', showModal)

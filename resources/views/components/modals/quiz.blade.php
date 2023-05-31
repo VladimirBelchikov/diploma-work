@@ -15,16 +15,16 @@
                 <div class="quiz-modal__slide swiper-slide">
                     <p class="quiz-modal__slide-title">Выберите услугу</p>
                     <div class="quiz-modal__slide-answers">
-                        <label  class="button quiz-modal__slide-button" data-quiz-ans="mk">
-                            <input type="radio" value="1">
+                        <label  class="button quiz-modal__slide-button">
+                            <input type="radio" value="1" data-quiz-ans="mk">
                             Мастер класс
                         </label>
-                        <label class="button quiz-modal__slide-button" data-quiz-ans="phsession">
-                            <input type="radio" value="2">
+                        <label class="button quiz-modal__slide-button">
+                            <input type="radio" value="2" data-quiz-ans="phsession">
                             Организация фотосессии
                         </label>
-                        <label class="button quiz-modal__slide-button" data-quiz-ans="couch">
-                            <input type="radio" value="3">
+                        <label class="button quiz-modal__slide-button">
+                            <input type="radio" value="3" data-quiz-ans="couch">
                             Подбор репетитора
                         </label>
                     </div>
