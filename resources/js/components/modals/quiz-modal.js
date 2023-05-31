@@ -1,4 +1,6 @@
 import Swiper from "swiper";
+import { validatePhone } from "../../helpers";
+import FormSender from "../../form-sender";
 
 function init() {
     const quiz = document.querySelector('.quiz-modal')
@@ -32,9 +34,9 @@ function init() {
             }
         ],
         couch: [
-            {question: 'Вопрос 1', answers: ['Ответ1', 'ответ 2', 'ответ 3']},
-            {question: 'Вопрос 2', answers: ['ответ 1', 'ответ2', 'ответ 3']},
-            {question: 'Вопрос 3', answers: ['ответ 1', 'ответ 2', 'ответ3']}
+            {question: 'Какое направление вас интересует?', answers: ['Живопись', 'Музыка', 'Фотография']},
+            {question: 'В какое время удобнее посещать занятие?', answers: ['Утром', 'Днем', 'Вечером']},
+            {question: 'Есть ли у вас собственный инструментарий?', answers: ['Да', 'Нет']}
         ]
     }
 
@@ -90,7 +92,7 @@ function init() {
     function createLastSlide() {
         const lastSlide = `<div class="swiper-slide">
                     <p class="quiz-modal__slide-title">Заполните форму</p>
-                    <form action="" class="form quiz-form">
+                    <form class="form quiz-form order-form">
                         <input type="hidden" class="form-control" name="type" value="">
                         <input type="hidden" class="form-control" name="note" value="">
                         <input type="text" class="form-control" name="name" placeholder="Имя">
@@ -100,6 +102,21 @@ function init() {
                 </div>`
         swiperWrapper.insertAdjacentHTML('beforeend', lastSlide)
         swiper.update()
+
+        swiperContainer.querySelector('.order-form').addEventListener('submit', async (event) => {
+            event.preventDefault()
+
+            const {target} = event
+
+            if (!validatePhone(target.querySelector('input[name=phone]').value)) return
+
+            const submitButton = target.querySelector('button[type=submit]')
+            submitButton.setAttribute('disabled', 'true')
+            submitButton.textContent = 'Подождите...'
+
+            const formSender = new FormSender(event)
+            if (await formSender.sendForm()) submitButton.textContent = 'Заявка успешно отправлена'
+        })
     }
 
     function handleClick() {
@@ -131,7 +148,7 @@ function init() {
                     handleClick()
                     if (swiper.isEnd) {
                         createLastSlide()
-                        postForm()
+                        getFormValues()
                     }
                 }, {once: true})
             })
@@ -139,10 +156,9 @@ function init() {
     })
 
 
-    function postForm() {
+    function getFormValues() {
         const quizForm = document.querySelector('.quiz-form')
         quizForm?.addEventListener('submit', (event) => {
-            event.preventDefault()
             quizForm.querySelector('input[name=type]').value = swiperContainer.querySelector('[data-quiz-ans]:checked').value
             quizForm.querySelector('input[name=note]').value = getInterview()
         })
