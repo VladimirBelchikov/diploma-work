@@ -105,6 +105,8 @@ function init() {
         swiperWrapper.insertAdjacentHTML('beforeend', lastSlide)
         swiper.update()
 
+        Inputmask({ "mask": "+7 (999) 999-99-99" }).mask('[name=phone]');
+
         swiperContainer.querySelector('.order-form').addEventListener('submit', async (event) => {
             event.preventDefault()
             const quizForm = document.querySelector('.quiz-form')
