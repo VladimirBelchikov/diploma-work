@@ -15,7 +15,7 @@
                 <div class="quiz-modal__slide swiper-slide">
                     <p class="quiz-modal__slide-title">Выберите услугу</p>
                     <div class="quiz-modal__slide-answers">
-                        <label  class="button quiz-modal__slide-button">
+                        <label class="button quiz-modal__slide-button">
                             <input type="radio" value="1" data-quiz-ans="mk">
                             Мастер класс
                         </label>
@@ -26,6 +26,10 @@
                         <label class="button quiz-modal__slide-button">
                             <input type="radio" value="3" data-quiz-ans="couch">
                             Подбор репетитора
+                        </label>
+                        <label class="button quiz-modal__slide-button">
+                            <input type="radio" value="4" data-quiz-ans="exhibition">
+                            Организация выставки
                         </label>
                     </div>
                 </div>

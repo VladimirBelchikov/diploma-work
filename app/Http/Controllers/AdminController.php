@@ -42,6 +42,13 @@ class AdminController extends Controller
         return view('admin.index', compact('list'));
     }
 
+    public function exhibition()
+    {
+        $list = Order::select('*')->where('type', 4)->get();
+
+        return view('admin.index', compact('list'));
+    }
+
     public function callback()
     {
         $list = Order::select('*')->where('type', null)->get();

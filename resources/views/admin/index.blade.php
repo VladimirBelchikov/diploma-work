@@ -20,6 +20,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('application.couch') }}">Репетитор</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('application.exhibition') }}">Выставки</a>
+            </li>
         </ul>
     </div>
     <table class="table table-bordered table-light caption-top">

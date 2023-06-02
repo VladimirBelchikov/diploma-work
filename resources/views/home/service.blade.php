@@ -54,11 +54,12 @@
                      data-title="Организация персональных выставок"
                      data-description="<p>Каждый художник мечтает о персональной выставке его работ.</p> <p>Наша студия будет счастлива, если именно Вы выберете её в качестве платформы для Вашей первой персональной выставки!</p><p>Оставьте заявку, мы с Вами свяжемся! Уверены, Ваша выставка будет потрясающей!</p>"
                      data-images="assets/img/home/service/12.jpg&assets/img/home/service/13.jpg&assets/img/home/service/14.jpg&assets/img/home/service/15.jpg&assets/img/home/service/16.jpg&assets/img/home/service/17.jpg"
+                     data-type="4"
                 >
                     <div class="cardSwiper__img">
                         <img src="{{ asset('assets/img/home/service/12.jpg') }}" alt="">
                     </div>
-                    <div class="cardSwiper__text">Организация персональных выставок</div>
+                    <div class="cardSwiper__text">Организация выставки</div>
                 </div>
             </div>
         </div>
